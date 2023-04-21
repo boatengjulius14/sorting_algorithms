@@ -42,12 +42,14 @@ void bubble_sort(int *array, size_t size)
  *
  * @array: array of integers to be sorted
  * @size: size of array
+ *
+ * Return: 0 if best case; 1 otherwise
  */
 
 int bubble_best_case(int *array, size_t size)
 {
 	int check;
-	size_t curr_val, next_val;
+	size_t j, curr_val, next_val;
 
 	check = 0;
 

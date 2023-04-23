@@ -26,7 +26,8 @@ void quick_sort(int *array, size_t size)
 		arr_len = size;
 	}
 	for (i = 0; i < (size - 1); i++)
-	{ curr_val = array[i];
+	{
+		curr_val = array[i];
 		if ((flag == 0) && (curr_val > pivot))
 		{ /* get the high value and its index */
 			flag = 1;
@@ -36,7 +37,6 @@ void quick_sort(int *array, size_t size)
 		}
 		if ((hi_val_index != (size_t) -1) && (pivot > curr_val))
 		{ /* swap high value with value less than pivot and print arr*/
-			flag = 0;
 			array[i] = hi_val;
 			array[hi_val_index] = curr_val;
 			print_array(array, arr_len);

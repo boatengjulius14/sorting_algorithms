@@ -10,30 +10,44 @@
 
 void quick_sort(int *array, size_t size)
 {
-	int i, curr_val, pivot, temp, first_val;
-	size_t array_size;
+	static size_t arr_len, temp = 1;
+	int pivot, hi_val, curr_val, flag;
+	size_t i, hi_val_index, pivot_index;
 
 	if ((size <= 1) || (array == NULL))
 		return;
-
-	first_val = array[0];
+	flag = 0;
+	hi_val_index = -1;
+	pivot_index = size - 1;
 	pivot = array[size - 1];
-	curr_val = size - 1;
-
-	for (i = (size - 2); i >= 0; i--)
+	if (temp == 1) /* initialise array length on first run */
 	{
-		if (array[i] > pivot)
-		{
-			--curr_val;
-			temp = array[i];
-			array[i] = array[curr_val];
-			array[curr_val] = temp;
+		temp += 5;
+		arr_len = size;
+	}
+	for (i = 0; i < (size - 1); i++)
+	{
+		curr_val = array[i];
+		if ((flag == 0) && (curr_val > pivot))
+		{ /* get the high value and its index */
+			flag = 1;
+			hi_val_index = i;
+			hi_val = array[hi_val_index];
+			continue;
+		}
+		if ((hi_val_index != (size_t) -1) && (pivot > curr_val))
+		{ /* swap high value with value less than pivot and print arr*/
+			array[i] = hi_val;
+			array[hi_val_index] = curr_val;
+			print_array(array, arr_len);
+			hi_val_index = i;
 		}
 	}
-
-	array[i + 1] = pivot;
-	array[size - 1] = first_val;
-	print_array(array, 10);
-
-	quick_sort(array, size - 1);
+	if (hi_val_index != (size_t) -1)
+	{ /* swap pivot with last found high value and print array */
+		size += 1;
+		array[pivot_index] = hi_val;
+		array[hi_val_index] = pivot;
+		print_array(array, arr_len);
+	} quick_sort(array, size - 1);
 }

@@ -34,4 +34,9 @@ void counting_sort(int *array, size_t size);
 int max_element(int *array, size_t size);
 void heap_sort(int *array, size_t size);
 void heapify(int *array, size_t size, size_t top_node, size_t sub_elem);
+void bitonic_sort(int *array, size_t size);
+void bitonic_merge(int *array, size_t size, size_t lowindex,
+		size_t count, int direction);
+void bitonic_count(int *array, size_t size, size_t lowindex,
+		size_t count, int direction);
 #endif

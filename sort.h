@@ -32,4 +32,6 @@ void selection_sort(int *array, size_t size);
 void print_array(const int *array, size_t size);
 void counting_sort(int *array, size_t size);
 int max_element(int *array, size_t size);
+void heap_sort(int *array, size_t size);
+void heapify(int *array, size_t size, size_t top_node, size_t sub_elem);
 #endif
